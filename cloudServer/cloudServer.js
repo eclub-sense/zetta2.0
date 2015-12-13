@@ -1,5 +1,6 @@
 /* global == */
 var zetta = require('../zetta2.0-runtime/zetta');
+var LED = require('zetta-mock-led');
 
 var PORT = 1337;
 
@@ -29,9 +30,10 @@ zettor.httpServer.cloud.use(function(handle) {
           if(peopleWithAccess.indexOf(authString) > -1) {
             console.log('found ya');
             // for everyone to use
-            //module.exports = {
-            //  username: authString.split(":")[0]
-            //};
+            env.auth = {
+              username: authString.split(":")[0],
+              ownedDevices: [ "58e84075-46a9-4593-a430-fc402a410972" ]
+            };
           } else {
             console.log('that`s not you bro');
             env.response.body = 'Unauthorized';
@@ -51,6 +53,9 @@ zettor.httpServer.cloud.use(function(handle) {
     });
   });
 
+zettor.use(LED, 1);
+zettor.use(LED, 2);
+zettor.use(LED, 666);
 zettor.listen(PORT, function(err) {
   if(err) {
     console.error(err);
