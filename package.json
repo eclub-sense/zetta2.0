@@ -12,6 +12,7 @@
     "calypso-level": "^0.5.0",
     "calypso-query-decompiler": "^0.4.0",
     "caql-js-compiler": "^0.5.0",
+    "clouds-socket": "^0.2.0-beta-4",
     "colors": "~0.6.2",
     "levelup": "^0.18.5",
     "medea": "^1.0.0",
